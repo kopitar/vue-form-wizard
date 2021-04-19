@@ -275,6 +275,8 @@
         })
       },
       navigateToTab (index) {
+        this.changeTab(this.activeTabIndex, index);
+        /*
         let validate = index > this.activeTabIndex
         if (index <= this.maxStep) {
           let cb = () => {
@@ -293,7 +295,7 @@
             this.setValidationError(null)
             cb()
           }
-        }
+        }*/
         return index <= this.maxStep
       },
       nextTab () {
