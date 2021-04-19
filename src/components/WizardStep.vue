@@ -17,13 +17,15 @@
                  :class="{square_shape:isStepSquare, tab_shape:isTabShape}"
                  :style="[tab.active ? iconActiveStyle: {}, tab.validationError ? errorStyle : {}]">
               <slot name="active-step">
-                <i v-if="tab.icon" :class="tab.icon" class="wizard-icon"></i>
+                <i v-if="tab.icon && !tab.image" :class="tab.icon" class="wizard-icon"></i>
+                <img v-else-if="!tab.icon && tab.image" :src="tab.image" class="wizard-image" :alt="index + 1" />
                 <i v-else class="wizard-icon">{{index + 1}}</i>
               </slot>
             </div>
             <slot v-if="!tab.active">
-              <i v-if="!tab.active && tab.icon" :class="tab.icon" class="wizard-icon"></i>
-              <i v-if="!tab.active && !tab.icon" class="wizard-icon">{{index + 1}}</i>
+              <i v-if="!tab.active && (tab.icon && !tab.image)" :class="tab.icon" class="wizard-icon"></i>
+              <img v-else-if="!tab.active && (!tab.icon && tab.image)" :src="tab.image" class="wizard-image" :alt="index + 1" />
+              <i v-else-if="!tab.active && (!tab.icon && !tab.image)" class="wizard-icon">{{index + 1}}</i>
             </slot>
         </transition>
 

@@ -24,6 +24,13 @@
         default: ''
       },
       /***
+       * Image path for the upper circle corresponding to the tab (alternative to icon)
+       */
+      image: {
+        type: String,
+        default: ''
+      },
+      /***
        * Only render the content when the tab is active
        */
       lazy: {
